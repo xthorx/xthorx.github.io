@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Cercar per col·lecció" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="collectionFilter">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="searchFunkos()">Cercar</button>
+        </div>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Imatge</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let funko of funkos; let i=index">
+                <th scope="row">{{ funko.num }}</th>
+                <td>{{ funko.name }}</td>
+                <td><img width="125px" [src]="funko.image"/></td>
+                <td>
+                    <button class="btn btn-primary" (click)="deleteFunko(i)">Esborrar</button>
+                    <button class="btn btn-primary" (click)="loadCurrentFunko(i)" data-toggle="modal" data-target="#addFunkModel">Modificar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addFunkModel" (click)="clearFunko()">Afegir nou funko</button>
+</div>
+
+<!-- Add Funko Modal -->
+<div class="modal fade" id="addFunkModel" tabindex="-1" aria-labelledby="addFunkModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addFunkModelLabel">Afegir un nou Funko a la Base de Dades</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Tancar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" placeholder="Nom del Funko" aria-label="Nom del Funko" aria-describedby="basic-addon1" [(ngModel)]="funko.name">
+                <input type="text" class="form-control" placeholder="Imatge del Funko" aria-label="Imatge del Funko" aria-describedby="basic-addon1" [(ngModel)]="funko.image">
+                <input type="text" class="form-control" placeholder="Col·lecció del Funko" aria-label="Col·lecció del Funko" aria-describedby="basic-addon1" [(ngModel)]="funko.collection">
+                <input type="text" class="form-control" placeholder="Número del Funko" aria-label="Número del Funko" aria-describedby="basic-addon1" [(ngModel)]="funko.num">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tancar</button>
+                <button type="button" class="btn btn-primary" *ngIf="mode=='add'" (click)="addFunko()" data-dismiss="modal">Afegir</button>
+                <button type="button" class="btn btn-primary" *ngIf="mode=='update'" (click)="updateFunko()" data-dismiss="modal">Modificar</button>
+            </div>
+        </div>
+    </div>
+</div>
