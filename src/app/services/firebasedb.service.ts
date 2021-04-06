@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 
-import { Funko } from '../models/funko';
+import { Treball } from '../models/treball';
 
 @Injectable({
   providedIn: 'root'
@@ -14,34 +14,25 @@ export class FirebasedbService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getFunkos(): Observable<Funko[]> {
-    return this.firestore.collection<Funko>("funkos").valueChanges({idField: 'id'});
-    //select * from funkos;
+  getTreballs(): Observable<Treball[]> {
+    return this.firestore.collection<Treball>("treballs").valueChanges({idField: 'id'});
+    //select * from treballs;
   }
 
-  addFunko(funko: Funko) {
-    this.firestore.collection("funkos").add({
-      name: funko.name,
-      image: funko.image,
-      num: funko.num,
-      collection: funko.collection
+  addTreball(treball: Treball) {
+    this.firestore.collection("treballs").add({
+      name: treball.name,
+      image: treball.image,
+      num: treball.num,
+      descripcio: treball.descripcio
     });
   }
 
-  deleteFunko(id: string) {
-    this.firestore.collection("funkos").doc(id).delete();
+  deleteTreball(id: string) {
+    this.firestore.collection("treballs").doc(id).delete();
   }
 
-  updateFunko(id: string, funko: Funko) {
-    this.firestore.collection("funkos").doc(id).update(funko);
-  }
-
-  getFunkosByCollection(collection: string): Observable<Funko[]> {
-    return this.firestore.collection<Funko>("funkos", ref => this.queryByCollection(collection, ref)).valueChanges({idField: 'id'});
-  }
-
-  private queryByCollection(collection: string, ref: any) {
-    console.log(collection);
-    return ref.where("collection", "==", collection);
+  updateTreball(id: string, treball: Treball) {
+    this.firestore.collection("treballs").doc(id).update(treball);
   }
 }

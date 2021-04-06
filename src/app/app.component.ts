@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Funko } from './models/funko';
+import { Treball } from './models/treball';
 import { FirebasedbService } from './services/firebasedb.service';
 
 @Component({
@@ -9,50 +9,42 @@ import { FirebasedbService } from './services/firebasedb.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public funkos: Funko[] = [];
-  public funko: Funko;
+  public treballs: Treball[] = [];
+  public treball: Treball;
   public mode: string;
   public collectionFilter: string;
 
   constructor(private firebd: FirebasedbService) {
-    this.funko = new Funko();
+    this.treball = new Treball();
     this.mode = "add";
 
-    this.firebd.getFunkos().subscribe(
-      (originalFunkos: Funko[]) => {
-        this.funkos = originalFunkos;
-        console.log(this.funkos);
+    this.firebd.getTreballs().subscribe(
+      (originalTreballs: Treball[]) => {
+        this.treballs = originalTreballs;
+        console.log(this.treballs);
       }
     );
   }
 
-  clearFunko() {
+  clearTreball() {
     this.mode = "add";
-    this.funko = new Funko();
+    this.treball = new Treball();
   }
 
-  addFunko() {
-    this.firebd.addFunko(this.funko);
+  addTreball() {
+    this.firebd.addTreball(this.treball);
   }
 
-  deleteFunko(i: number) {
-    this.firebd.deleteFunko(this.funkos[i].id);
+  deleteTreball(i: number) {
+    this.firebd.deleteTreball(this.treballs[i].id);
   }
 
-  loadCurrentFunko(i: number) {
+  loadCurrentTreball(i: number) {
     this.mode = "update"
-    this.funko = this.funkos[i];
+    this.treball = this.treballs[i];
   }
 
-  updateFunko() {
-    this.firebd.updateFunko(this.funko.id, this.funko);
-  }
-
-  searchFunkos() {
-    this.firebd.getFunkosByCollection(this.collectionFilter).subscribe(
-      (orginalFunkos: Funko[]) => {
-        this.funkos = orginalFunkos;
-      }
-    );
+  updateTreball() {
+    this.firebd.updateTreball(this.treball.id, this.treball);
   }
 }

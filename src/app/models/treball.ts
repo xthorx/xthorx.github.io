@@ -1,15 +1,15 @@
-export class Funko {
+export class Treball {
     private _id: string;
     private _name: string;
     private _image: string;
-    private _collection: string;
+    private _descripcio: string;
     private _num: number;
 
     constructor() {
         this._id = "";
         this._name = "";
         this._image = "";
-        this._collection = "";
+        this._descripcio = "";
         this._num = 0;
     }
 
@@ -25,8 +25,8 @@ export class Funko {
         return this._image;
     }
 
-    get collection(): string {
-        return this._collection;
+    get descripcio(): string {
+        return this._descripcio;
     }
 
     get num(): number {
@@ -45,8 +45,8 @@ export class Funko {
         this._image = image;
     }
 
-    set collection(collection: string) {
-        this._collection = collection;
+    set descripcio(descripcio: string) {
+        this._descripcio = descripcio;
     }
 
     set num(num: number) {
