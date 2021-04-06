@@ -1,0 +1,51 @@
+<div class="container">
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">NomAAAAAAAAA</th>
+            <th scope="col">Imatge</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let treball of treballs; let i=index">
+                <th scope="row">{{ treball.num }}</th>
+                <td>{{ treball.name }}</td>
+                <td><img width="125px" [src]="treball.image"/></td>
+                <td>
+                    <button class="btn btn-primary" (click)="deleteTreball(i)">Esborrar</button>
+                    <button class="btn btn-primary" (click)="loadCurrentTreball(i)" data-toggle="modal" data-target="#addTrebModel">Modificar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTrebModel" (click)="clearTreball()">Afegir nou Treball</button>
+</div>
+
+<!-- Add Treball Modal -->
+<div class="modal fade" id="addTrebModel" tabindex="-1" aria-labelledby="addTrebModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addTrebModelLabel">Afegir un nou Treball a la Base de Dades</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Tancar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" placeholder="Nom del Treball" aria-label="Nom del Treball" aria-describedby="basic-addon1" [(ngModel)]="treball.name">
+                <input type="text" class="form-control" placeholder="Imatge del Treball" aria-label="Imatge del Treball" aria-describedby="basic-addon1" [(ngModel)]="treball.image">
+                <input type="text" class="form-control" placeholder="Descripció del Treball" aria-label="Descripció del Treball" aria-describedby="basic-addon1" [(ngModel)]="treball.descripcio">
+                <input type="text" class="form-control" placeholder="Número del Treball" aria-label="Número del Treball" aria-describedby="basic-addon1" [(ngModel)]="treball.num">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tancar</button>
+                <button type="button" class="btn btn-primary" *ngIf="mode=='add'" (click)="addTreball()" data-dismiss="modal">Afegir</button>
+                <button type="button" class="btn btn-primary" *ngIf="mode=='update'" (click)="updateTreball()" data-dismiss="modal">Modificar</button>
+            </div>
+        </div>
+    </div>
+</div>

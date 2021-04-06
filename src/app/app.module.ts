@@ -8,10 +8,16 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ScullyLibModule } from '@scullyio/ng-lib';
+import { PrincipalComponent } from './principal/principal.component';
+import { TreballsComponent } from './treballs/treballs.component';
+import { CurriculumComponent } from './curriculum/curriculum.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PrincipalComponent,
+    TreballsComponent,
+    CurriculumComponent
   ],
   imports: [
     BrowserModule,
