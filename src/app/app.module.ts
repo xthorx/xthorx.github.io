@@ -11,13 +11,17 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
 import { PrincipalComponent } from './principal/principal.component';
 import { TreballsComponent } from './treballs/treballs.component';
 import { CurriculumComponent } from './curriculum/curriculum.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PrincipalComponent,
     TreballsComponent,
-    CurriculumComponent
+    CurriculumComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
