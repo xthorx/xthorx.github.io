@@ -1,0 +1,44 @@
+#botonFooterMasPremios{
+    border: 5px solid #412fb3;
+    color: white;
+    padding: 10px;
+    background-color: #412fb330;
+    padding: 10px 40px;
+}
+
+#botonFooterMasPremios:hover{
+    background-color: #412fb3c9;
+}
+
+
+.botonRequisitos{
+    border: 5px solid #412fb3;
+    color: #412fb3;
+    padding: 10px;
+    background-color: #412fb330;
+    padding: 10px 40px;
+    margin-bottom: 10px;
+}
+
+.botonRequisitos:hover{
+    background-color: #412fb3c9;
+    color: white;
+}
+
+.botonRequisitos.siguiente {
+    border: 5px solid #41b32f;
+    color: #2fb333;
+    padding: 10px;
+    background-color: #4db32f30;
+    padding: 10px 40px;
+    margin-bottom: 10px;
+}
+
+.botonRequisitos.siguiente:hover {
+    background-color: #2fb333;
+    color: white;
+}
+
+.hidden{
+    display:none;
+}
